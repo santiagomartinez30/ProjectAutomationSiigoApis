@@ -8,7 +8,7 @@ import io.cucumber.java.en.Then;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
-public class ConsultUsersStep {
+public class ConsultUsersSteps {
 
     private String idUser;
 

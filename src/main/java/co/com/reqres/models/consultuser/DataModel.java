@@ -1,4 +1,4 @@
-package co.com.reqres.models.users;
+package co.com.reqres.models.consultuser;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

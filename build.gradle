@@ -36,6 +36,7 @@ ext {
     assertjVersion = '3.22.0'
     slf4jVersion = '2.0.0-alpha6'
     seleniumVersion = '4.0.0'
+    javaFaker = '1.0.2'
 }
 
 serenity {
@@ -54,8 +55,10 @@ dependencies {
     implementation "org.assertj:assertj-core:$rootProject.ext.assertjVersion"
     implementation "org.slf4j:slf4j-simple:$rootProject.ext.slf4jVersion"
     implementation "org.seleniumhq.selenium:selenium-java:$rootProject.ext.seleniumVersion"
+    implementation "com.github.javafaker:javafaker:$rootProject.ext.javaFaker"
     compileOnly "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$rootProject.ext.lombokVersion"
+
 }
 
 test {

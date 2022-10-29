@@ -4,7 +4,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.rest.interactions.Get;
 
-import static co.com.reqres.enums.EndPoints.CONSULT_USER_FOR_ID;
+import static co.com.reqres.enums.EndPoints.USER;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class GetUser implements Task {
@@ -22,7 +22,7 @@ public class GetUser implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Get.resource(CONSULT_USER_FOR_ID.resource().concat(id))
+                Get.resource(USER.resource().concat(id))
         );
     }
 }

@@ -1,6 +1,6 @@
 package co.com.reqres.consequences;
 
-import co.com.reqres.models.users.UsersModel;
+import co.com.reqres.models.consultuser.UsersModel;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import net.serenitybdd.screenplay.Consequence;
 import net.serenitybdd.screenplay.rest.questions.LastResponse;

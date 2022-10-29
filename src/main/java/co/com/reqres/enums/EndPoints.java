@@ -2,7 +2,7 @@ package co.com.reqres.enums;
 
 public enum EndPoints {
 
-    CONSULT_USER_FOR_ID("/api/users/");
+    USER("/api/users/");
 
     private final String value;
 
