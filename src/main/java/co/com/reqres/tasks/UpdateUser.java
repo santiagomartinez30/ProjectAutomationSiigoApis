@@ -6,24 +6,26 @@ import io.restassured.http.ContentType;
 import lombok.SneakyThrows;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.rest.interactions.Post;
+import net.serenitybdd.screenplay.rest.interactions.Put;
 
 import static co.com.reqres.enums.EndPoints.USER;
 import static com.google.common.net.HttpHeaders.CONTENT_TYPE;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-public class CreateUser implements Task {
+public class UpdateUser implements Task {
 
-    private final UserModel userModel;
     private final ObjectMapper objectMapper;
+    private final UserModel userModel;
+    private final String id;
 
-    public CreateUser(UserModel userModel) {
-        this.userModel = userModel;
+    public UpdateUser(UserModel userModel, String id) {
         this.objectMapper = new ObjectMapper();
+        this.userModel = userModel;
+        this.id = id;
     }
 
-    public static CreateUser with(UserModel userModel) {
-        return instrumented(CreateUser.class, userModel);
+    public static UpdateUser with(UserModel userModel, String id) {
+        return instrumented(UpdateUser.class, userModel, id);
     }
 
     @Override
@@ -31,11 +33,12 @@ public class CreateUser implements Task {
     public <T extends Actor> void performAs(T actor) {
         String json = objectMapper.writeValueAsString(userModel);
         actor.attemptsTo(
-                Post.to(USER.resource())
+                Put.to(USER.resource().concat(id))
                         .with(request -> request
                                 .header(CONTENT_TYPE, ContentType.JSON)
                                 .body(json)
                         )
         );
     }
+
 }

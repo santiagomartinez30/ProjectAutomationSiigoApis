@@ -13,7 +13,7 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 public class CreateUserSteps {
     private UserModel data;
 
-    @Given("que usuario {word} ingresa datos correctos de usuario")
+    @Given("que usuario {word} ingresa datos correctos")
     public void userSetData(String nameActor) {
         data = correct();
         theActorCalled(nameActor).wasAbleTo(

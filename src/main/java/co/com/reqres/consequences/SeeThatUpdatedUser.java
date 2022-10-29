@@ -9,26 +9,22 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class SeeThatCreateUser {
-    private SeeThatCreateUser() {
+public class SeeThatUpdatedUser {
+    private SeeThatUpdatedUser() {
 
     }
 
-    public static Consequence[] correctWith(UserModel userModel) {
+    public static Consequence[] correctWith(UserModel usersModel) {
         return new Consequence[]{
                 seeThat("status code",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).getStatusCode(),
-                        equalTo(201)),
+                        equalTo(200)),
                 seeThat("schema user validation",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).asString(),
-                        JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/create_user.json")),
+                        JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/update_user.json")),
                 seeThat("name value",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).as(UserModel.class).getName(),
-                        equalTo(userModel.getName())),
-                seeThat("job value",
-                        response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).as(UserModel.class).getJob(),
-                        equalTo(userModel.getJob()))
+                        equalTo(usersModel.getName()))
         };
     }
-
 }

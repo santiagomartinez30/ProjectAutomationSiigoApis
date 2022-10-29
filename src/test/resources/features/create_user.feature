@@ -2,9 +2,9 @@
 Característica: Registro de usuarios
   como usuario de reqres
   quiero crear usuarios
-  para poder darlos de alta en la pagina.
+  para poder darlos de alta en el sistema.
 
-  Escenario: Registro de usuario exitoso
-    Dado que usuario admin ingresa datos correctos de usuario
+  Escenario: Registrar usuario exitosamente
+    Dado que usuario admin ingresa datos correctos
     Entonces el puede registrar usuario en la pagina
 
