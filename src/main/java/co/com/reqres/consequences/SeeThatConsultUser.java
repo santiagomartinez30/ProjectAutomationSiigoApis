@@ -7,6 +7,8 @@ import net.serenitybdd.screenplay.rest.questions.LastResponse;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.apache.http.HttpStatus.SC_NOT_FOUND;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.CoreMatchers.*;
 
 public class SeeThatConsultUser {
@@ -18,7 +20,7 @@ public class SeeThatConsultUser {
         return new Consequence[]{
                 seeThat("status code",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).getStatusCode(),
-                        equalTo(200)
+                        equalTo(SC_OK)
                 ),
                 seeThat("schema user validation",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).asString(),
@@ -34,7 +36,8 @@ public class SeeThatConsultUser {
         return new Consequence[]{
                 seeThat("status code",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).getStatusCode(),
-                        equalTo(404))
+                        equalTo(SC_NOT_FOUND)
+                )
         };
     }
 }

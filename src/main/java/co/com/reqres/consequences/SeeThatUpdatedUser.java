@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.rest.questions.LastResponse;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class SeeThatUpdatedUser {
@@ -18,7 +19,7 @@ public class SeeThatUpdatedUser {
         return new Consequence[]{
                 seeThat("status code",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).getStatusCode(),
-                        equalTo(200)),
+                        equalTo(SC_OK)),
                 seeThat("schema user validation",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).asString(),
                         JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/update_user.json")),

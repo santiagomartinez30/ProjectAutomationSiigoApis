@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.rest.questions.LastResponse;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class SeeThatCreateUser {
@@ -18,7 +19,7 @@ public class SeeThatCreateUser {
         return new Consequence[]{
                 seeThat("status code",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).getStatusCode(),
-                        equalTo(201)),
+                        equalTo(SC_CREATED)),
                 seeThat("schema user validation",
                         response -> LastResponse.received().answeredBy(theActorInTheSpotlight()).asString(),
                         JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/create_user.json")),
